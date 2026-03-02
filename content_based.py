@@ -25,3 +25,27 @@ def content_based_recommendation(data, item_name, top_n=5):
     product_indices = [i[0] for i in similarity_scores]
 
     return data.iloc[product_indices][['ProductName', 'Brand', 'ReviewCount']]
+
+    def content_based_recommendation(data, item_name, top_n=5):
+    ...
+    return recommended_items
+
+
+# ADD THIS AT THE VERY BOTTOM
+
+if __name__ == "__main__":
+    import pandas as pd
+    from cleaning_data import process_data
+
+    data = pd.read_csv("clean_data.csv")
+    data = process_data(data)
+
+    print("Testing Content-Based Recommendation...\n")
+
+    result = content_based_recommendation(
+        data,
+        item_name=data['ProductName'].iloc[0],
+        top_n=5
+    )
+
+    print(result)
